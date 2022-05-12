@@ -1,0 +1,27 @@
+<div class="heading">
+    <h1>Json Data Response</h1>
+</div>
+<div class="container">
+
+    <table class="table table-striped">
+
+        <tr>
+            <th>Id</th>
+            <th style="width: 80px;">User ID</th>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+
+        <tbody>
+            <tr *ngFor="let data of otherMessage">
+                <td>{{ data.id }}</td>
+                <td>{{ data.userId }}</td>
+                <td>{{ data.title }}</td>
+                <td>{{ data.body }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <button routerLink="" mat-flat-button color="primary">Back</button>
+</div>
