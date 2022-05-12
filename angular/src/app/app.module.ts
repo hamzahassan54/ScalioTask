@@ -12,11 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { ResultScreenModule } from './result-screen/result-screen.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PagenotfoundComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

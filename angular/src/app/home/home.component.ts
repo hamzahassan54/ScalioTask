@@ -32,7 +32,9 @@ export class HomeComponent implements OnInit {
         catchError(error => {
           this.errorMsg = error.message;
           console.log(this.errorMsg)
+          this.router.navigate(['/error'])
           return of([]);
+
         })
       ).subscribe(data => {
         if (data.length > 0) {
