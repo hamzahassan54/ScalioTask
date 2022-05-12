@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { DataService } from '../services/data.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,17 +21,16 @@ export class HomeComponent implements OnInit {
 
   constructor(private postsservices: PostsService,
     private router: Router,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
   }
   sendID() {
-
-
     this.postsservices.getPosts(this.id)
       .pipe(
         catchError(error => {
           this.errorMsg = error.message;
-          this.router.navigate(['/error'])
+          this.openSnackBar(this.errorMsg, "Cancel")
           return of([]);
         })
       ).subscribe(data => {
@@ -43,12 +42,14 @@ export class HomeComponent implements OnInit {
       });
   }
   modelChanged(arg: any) {
-    // console.log("modelchanged " + arg);
     if (arg == null) {
       this.button = true
     } else {
       this.button = false
     }
 
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }
