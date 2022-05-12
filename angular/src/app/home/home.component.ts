@@ -25,16 +25,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   sendID() {
-    console.log("this is id", this.id);
+
 
     this.postsservices.getPosts(this.id)
       .pipe(
         catchError(error => {
           this.errorMsg = error.message;
-          console.log(this.errorMsg)
           this.router.navigate(['/error'])
           return of([]);
-
         })
       ).subscribe(data => {
         if (data.length > 0) {
@@ -43,15 +41,6 @@ export class HomeComponent implements OnInit {
           this.router.navigate(['/result'])
         }
       });
-
-    // this.postsservices.getPosts(this.id).subscribe(data => {
-    //   console.log(data);
-    //   if (data.length > 0) {
-    //     this.object = data;
-    //     this.dataService.jsonData(this.object);
-    //     this.router.navigate(['/result'])
-    //   }
-    // });
   }
   modelChanged(arg: any) {
     // console.log("modelchanged " + arg);
