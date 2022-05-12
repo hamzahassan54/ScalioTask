@@ -27,13 +27,21 @@ export class HomeComponent implements OnInit {
   sendID() {
     console.log("this is id", this.id);
 
-    this.object = this.postsservices.getPosts(this.id)
+    this.postsservices.getPosts(this.id)
       .pipe(
         catchError(error => {
           this.errorMsg = error.message;
+          console.log(this.errorMsg)
           return of([]);
         })
-      );
+      ).subscribe(data => {
+        if (data.length > 0) {
+          this.object = data;
+          this.dataService.jsonData(this.object);
+          this.router.navigate(['/result'])
+        }
+      });
+
     // this.postsservices.getPosts(this.id).subscribe(data => {
     //   console.log(data);
     //   if (data.length > 0) {

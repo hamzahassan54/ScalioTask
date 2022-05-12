@@ -26,12 +26,11 @@ export class PostsService {
         } else {
           errorMsg = this.getServerErrorMessage(error);
         }
-
-        // return throwError(errorMsg);
         return throwError(() => new Error(errorMsg))
       })
     );
   }
+
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
       case 404: {
@@ -46,7 +45,6 @@ export class PostsService {
       default: {
         return `Unknown Server Error: ${error.message}`;
       }
-
     }
   }
 }
