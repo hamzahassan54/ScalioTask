@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 
@@ -8,9 +8,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [HomeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +22,14 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have a title 'I love pizza!'`, async(() => {
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.debugElement.componentInstance;
+    expect(component.title).toEqual('Angular Application with NodeJs');
+  }));
+
+
+
 });
+

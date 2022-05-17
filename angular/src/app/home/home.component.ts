@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class HomeComponent implements OnInit {
 
   id = '';
-  title = 'Angular';
+  title = 'Angular Application with NodeJs';
   object: any;
   button: boolean = true
   errorMsg: any;

@@ -7,14 +7,16 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
-  otherMessage: any;
+  jsonResponsData: any;
+  postData: any;
 
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
     console.log("i am in results")
-    this.data.currentMessage.subscribe(msg => this.otherMessage = msg);
-    console.log("this is object", this.otherMessage);
+    this.data.currentMessage.subscribe(msg => this.jsonResponsData = msg);
+    this.postData = this.jsonResponsData[0];
+    console.log("this is object", this.postData);
   }
 
 
