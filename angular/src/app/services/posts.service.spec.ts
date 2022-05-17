@@ -28,7 +28,7 @@ describe('PostsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#getPost should return expected data', (done) => {
+  it('#getPost by postID should return expected data', (done) => {
     const data = [
       {
         "userId": 1,
@@ -58,5 +58,23 @@ describe('PostsService', () => {
     testRequest.flush(data);
   });
 
+  it('should turn 404 error if post not found', () => {
+    service.getPosts(11).subscribe(result => {
+      console.log(result)
+      expect(result).toBe("http://localhost:3000/posts/11: 404 Not Found");
+      fail
+    }
+
+
+    );
+
+    const req = httpTestingController.expectOne('http://localhost:3000/posts/11');
+
+    const msg = '404 error';
+
+    req.flush(msg, { status: 404, statusText: 'Not Found' });
+
+
+  });
 
 });
