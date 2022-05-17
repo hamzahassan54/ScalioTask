@@ -11,8 +11,6 @@ export class DataService {
   currentMessage = this.responseData.asObservable();
 
   jsonData(msg: any) {
-    // console.log('message from service');
-    // console.log('message', msg);
     this.responseData.next(msg);
   }
 }
