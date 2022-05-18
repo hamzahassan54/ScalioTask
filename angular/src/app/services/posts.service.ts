@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PostsService {
-  apiURL = 'http://localhost:3000'
+  apiURL = 'http://localhost:8080'
 
 
   constructor(public http: HttpClient) { }

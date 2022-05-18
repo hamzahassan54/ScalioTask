@@ -6,7 +6,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 describe('PostsService', () => {
   let service: PostsService;
   let httpTestingController: HttpTestingController;
-  let url = 'http://localhost:3000'
+  let url = 'http://localhost:8080'
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -53,7 +53,7 @@ describe('PostsService', () => {
       done();
     });
 
-    const testRequest = httpTestingController.expectOne('http://localhost:3000/posts/1');
+    const testRequest = httpTestingController.expectOne('http://localhost:8080/posts/1');
 
     testRequest.flush(data);
   });
@@ -61,14 +61,14 @@ describe('PostsService', () => {
   it('should turn 404 error if post not found', () => {
     service.getPosts(11).subscribe(result => {
       console.log(result)
-      expect(result).toBe("http://localhost:3000/posts/11: 404 Not Found");
+      expect(result).toBe("http://localhost:8080/posts/11: 404 Not Found");
       fail
     }
 
 
     );
 
-    const req = httpTestingController.expectOne('http://localhost:3000/posts/11');
+    const req = httpTestingController.expectOne('http://localhost:8080/posts/11');
 
     const msg = '404 error';
 
