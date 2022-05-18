@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require("cors");
 const app = express();
 var postsroutes = require('./routes/posts');
-const port = 8080
+const port = process.env.PORT || 8080
 
 var corsOptions = {
     origin: "http://localhost:8080"
