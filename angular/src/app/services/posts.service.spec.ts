@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsService } from './posts.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import * as GLOBAL from '../../environments/environment.prod'
 
 describe('PostsService', () => {
   let service: PostsService;

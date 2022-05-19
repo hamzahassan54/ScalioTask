@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import * as GLOBAL from '../../environments/environment.prod'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-  apiURL = 'http://localhost:8080'
+  // apiURL = 'http://localhost:8080'
 
 
   constructor(public http: HttpClient) { }
@@ -18,7 +19,7 @@ export class PostsService {
   // }
 
   getPosts(id: any): Observable<any> {
-    return this.http.get(this.apiURL + '/posts/' + id).pipe(
+    return this.http.get(GLOBAL.environment.apiUrl + '/posts/' + id).pipe(
       catchError(error => {
         let errorMsg: string;
         if (error.error instanceof ErrorEvent) {
